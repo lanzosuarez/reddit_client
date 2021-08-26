@@ -97,7 +97,7 @@ const PostComment: FC<{ comment: Comment }> = ({
         <Button
           onClick={() => toggleExpanded.toggle()}
           variant="ghost"
-          size="xs"
+          size="sm"
           rightIcon={
             <Icon as={expanded ? MdKeyboardArrowDown : MdKeyboardArrowUp} />
           }
