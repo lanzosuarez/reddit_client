@@ -6,6 +6,12 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 
+/**
+ *
+ *  Error component for error state
+ *
+ */
+
 const Error: FC<{
   title?: string;
   message?: string;

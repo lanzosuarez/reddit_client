@@ -93,6 +93,7 @@ const PostComment: FC<{ comment: Comment }> = ({
           {downs.toLocaleString()}
         </Flex>
       </Stack>
+      {/* show see replies button if there are replies */}
       {!!replies.length && (
         <Button
           onClick={() => toggleExpanded.toggle()}

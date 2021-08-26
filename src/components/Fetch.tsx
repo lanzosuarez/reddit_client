@@ -10,6 +10,11 @@ interface FetchProps {
   renderError: (error?: unknown) => JSX.Element;
 }
 
+/**
+ *
+ *  Fetch component to compose loading, error and success state
+ *
+ */
 const Fetch: FC<FetchProps> = ({
   isLoading,
   isError,

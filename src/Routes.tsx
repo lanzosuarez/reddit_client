@@ -3,6 +3,7 @@ import LoadPosts from "components/LoadPosts";
 import { Suspense, FC } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
+// lazy load component, but prefetch them for much faster time when user intent to load the screen
 const Post = lazy(() => import(/*webpackPrefetch: true*/ "screens/Post"));
 const Hot = lazy(() => import(/*webpackPrefetch: true*/ "screens/Hot"));
 const Top = lazy(() => import(/*webpackPrefetch: true*/ "screens/Top"));

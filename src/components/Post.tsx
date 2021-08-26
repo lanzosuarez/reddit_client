@@ -45,6 +45,7 @@ const Post: FC<{ post: Submission; category: string }> = ({
 
   const handleCopy = () => {
     onCopy();
+    // show toasts on copy
     toast({
       description: "Link copied!",
       status: "success",

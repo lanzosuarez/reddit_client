@@ -40,7 +40,7 @@ const NavItem: FC<NavItems> = ({ to, icon, text }) => {
       px="6"
       cursor="pointer"
       fontWeight="bold"
-      bgColor={isMatch ? "#ff4500" : "none"}
+      bgColor={isMatch ? "#ff4500" : "none"} // if nav is active, set bgcolor to reddit primary color
     >
       {!!icon && icon}
       <NavLink to={to}>{text}</NavLink>
@@ -62,10 +62,6 @@ const Nav = () => (
           w: 1,
           bgColor: "black",
         },
-      },
-
-      ".activeLink": {
-        bgColor: "#ff4500",
       },
     }}
   >
