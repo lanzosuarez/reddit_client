@@ -3,7 +3,7 @@ import LoadPosts from "components/LoadPosts";
 import { Suspense, FC } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-// lazy load component, but prefetch them for much faster time when user intent to load the screen
+// lazy load component, but prefetch them for much faster load time of pages
 const Post = lazy(() => import(/*webpackPrefetch: true*/ "screens/Post"));
 const Hot = lazy(() => import(/*webpackPrefetch: true*/ "screens/Hot"));
 const Top = lazy(() => import(/*webpackPrefetch: true*/ "screens/Top"));
@@ -12,8 +12,8 @@ const Controversial = lazy(
   () => import(/*webpackPrefetch: true*/ "screens/Controversial")
 );
 
-const Suspended: FC = ({ children }) => (
-  <Suspense fallback={<LoadPosts />}>{children}</Suspense>
+const Suspended: FC = (props) => (
+  <Suspense fallback={<LoadPosts />} {...props} />
 );
 
 /**

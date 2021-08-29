@@ -167,7 +167,7 @@ const ViewPost: FC<ViewPostProps> = ({
 }) => {
   const history = useHistory();
   return (
-    <Stack maxW="sm" spacing="4" p="4">
+    <Stack maxW="sm" spacing="4" p="4" className="view-post">
       <Button
         colorScheme="black"
         onClick={() => history.goBack()}

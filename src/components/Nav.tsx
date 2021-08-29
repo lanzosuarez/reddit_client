@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { List, ListItem, ListIcon, Flex } from "@chakra-ui/react";
+import { List, ListItem, ListIcon, Flex, Box } from "@chakra-ui/react";
 import { MdStarBorder, MdFiberNew } from "react-icons/md";
 import { AiOutlineFire } from "react-icons/ai";
 import { NavLink, useRouteMatch } from "react-router-dom";
@@ -36,39 +36,33 @@ const NavItem: FC<NavItems> = ({ to, icon, text }) => {
   const isMatch = useRouteMatch({ path: to });
   return (
     <ListItem
+      as={NavLink}
+      pos="relative"
       py="4"
       px="6"
       cursor="pointer"
       fontWeight="bold"
       bgColor={isMatch ? "#ff4500" : "none"} // if nav is active, set bgcolor to reddit primary color
+      _hover={{
+        bgColor: "#ff4500",
+      }}
+      transition="0.1s"
+      to={to}
     >
       {!!icon && icon}
-      <NavLink to={to}>{text}</NavLink>
+      {text}
     </ListItem>
   );
 };
 
 const Nav = () => (
-  <Flex
-    as={List}
-    direction="row"
-    borderBottom="1px solid"
-    sx={{
-      __c: {
-        _before: {
-          content: "''",
-          position: "absolute",
-          h: "100%",
-          w: 1,
-          bgColor: "black",
-        },
-      },
-    }}
-  >
-    {navItems.map((navItem, i) => (
-      <NavItem {...navItem} key={i} />
-    ))}
-  </Flex>
+  <Box as="nav">
+    <Flex as={List} direction="row" borderBottom="1px solid">
+      {navItems.map((navItem, i) => (
+        <NavItem {...navItem} key={i} />
+      ))}
+    </Flex>
+  </Box>
 );
 
 export default Nav;

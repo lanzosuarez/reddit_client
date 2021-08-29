@@ -25,7 +25,7 @@ const New: FC = () => {
       }}
       renderLoading={() => <LoadPosts />}
       renderSuccess={() => (
-        <Stack>
+        <Stack className="new-posts">
           {data?.map((post) => (
             <Post category="new" key={post.id} post={post} />
           ))}

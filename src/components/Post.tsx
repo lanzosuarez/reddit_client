@@ -26,17 +26,7 @@ const Action: FC = ({ children }) => (
 );
 
 const Post: FC<{ post: Submission; category: string }> = ({
-  post: {
-    title,
-    created,
-    author,
-    num_comments,
-    url,
-    permalink,
-    id,
-    thumbnail,
-    setSuggestedSort,
-  },
+  post: { title, created, author, num_comments, url, permalink, id, thumbnail },
   category,
 }) => {
   const history = useHistory();
@@ -91,7 +81,13 @@ const Post: FC<{ post: Submission; category: string }> = ({
             Share
           </MenuButton>
           <MenuList>
-            <MenuItem onClick={handleCopy} icon={<MdContentCopy />}>
+            <MenuItem
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCopy();
+              }}
+              icon={<MdContentCopy />}
+            >
               Copy Link
             </MenuItem>
           </MenuList>
