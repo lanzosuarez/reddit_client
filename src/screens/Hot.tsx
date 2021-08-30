@@ -25,7 +25,7 @@ const Hot: FC = () => {
       }}
       renderLoading={() => <LoadPosts />}
       renderSuccess={() => (
-        <Stack className="hot-posts">
+        <Stack className="hotPosts">
           {data?.map((post) => (
             <Post category="hot" key={post.id} post={post} />
           ))}

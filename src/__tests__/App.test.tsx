@@ -1,30 +1,28 @@
+import { waitFor } from "@testing-library/react";
 import App from "App";
-import { render } from "test_utils";
+import { defineMatchMedia, render } from "test_utils";
 
-describe("renders the app", () => {
+describe("renders the <App/>", () => {
   beforeEach(() => {
-    Object.defineProperty(window, "matchMedia", {
-      writable: true,
-      value: jest.fn().mockImplementation((query) => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addListener: jest.fn(), // Deprecated
-        removeListener: jest.fn(), // Deprecated
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      })),
-    });
+    defineMatchMedia();
   });
   it("shows the nav", async () => {
-    const { getByRole, debug } = render(<App />);
+    const { getByRole } = render(<App />);
     const nav = getByRole("navigation");
     expect(nav).toBeInTheDocument();
   });
-  it.only("it shows loading", async () => {
-    const { debug } = render(<App />);
-    // const nav = getByRole("");
-    // debug();
+
+  it("it initially shows the main container with loading element", () => {
+    const { getByRole, container } = render(<App />);
+    const main = getByRole("main");
+    expect(main).toBeInTheDocument();
+    const loading = container.querySelector("main > .loadPosts");
+    expect(loading).toBeInTheDocument();
+  });
+
+  it("it eventually shows hot posts container", async () => {
+    const { container } = render(<App />);
+    await waitFor(() => container.querySelector("main > .hotPosts"));
+    expect(container.querySelector("main > .hotPosts"));
   });
 });

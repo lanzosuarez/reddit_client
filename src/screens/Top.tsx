@@ -25,7 +25,7 @@ const Top: FC = () => {
       }}
       renderLoading={() => <LoadPosts />}
       renderSuccess={() => (
-        <Stack>
+        <Stack className="topPosts">
           {data?.map((post) => (
             <Post category="top" key={post.id} post={post} />
           ))}
